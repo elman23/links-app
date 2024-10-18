@@ -4,6 +4,8 @@ Credit for the user API and the GoLang application goes to [Mohit Dubey](https:/
 
 The application is an extension of [this example](https://medium.com/@mohitdubey_83162/mastering-mongodb-integration-with-go-a-step-by-step-developers-guide-3fcbe46a906e).
 
+The GitHub repo is available [here](https://github.com/mohitdb7/full-stack-development/tree/main/mongo-db).
+
 ## Users
 
 Create a new user:
