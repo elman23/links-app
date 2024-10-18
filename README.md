@@ -96,3 +96,5 @@ python -m http.server 3000
 ```
 
 You'll get the frontend available at http://localhost:3000/. Don't forget to run the APIs in parallel!
+
+Clearly, you can serve the `index.html` file using any web server you like...
