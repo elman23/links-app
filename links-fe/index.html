@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpine.js API Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+
+  <div x-data="linkTable()" x-init="fetchLinks()">
+    <!-- Table for displaying the links -->
+    <table border="1" cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through the fetched links and display each one -->
+        <template x-for="link in links" :key="link.id">
+          <tr>
+            <td x-text="link.id"></td>
+            <td x-text="link.link"></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+
+    <!-- Display an error message if the API call fails -->
+    <div x-show="error" style="color: red;">
+      <p>Error loading links. Please try again later.</p>
+    </div>
+  </div>
+
+  <script>
+    // Alpine.js component
+    function linkTable() {
+      return {
+        links: [],       // Data to store the API response
+        error: false,    // Error flag to show if the API call fails
+        // Fetch the data from the API
+        fetchLinks() {
+          fetch('http://localhost:8080/links')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              this.links = data;  // Store the retrieved data in the links array
+            })
+            .catch(error => {
+              console.error('Error fetching links:', error);
+              this.error = true;  // Set the error flag to true in case of failure
+            });
+        }
+      };
+    }
+  </script>
+
+</body>
+</html>

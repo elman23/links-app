@@ -7,6 +7,7 @@ import (
 	"links-be/service"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -31,7 +32,7 @@ func Startup() {
 	router.HandleFunc("/links/delete/{link_id}", linkHandler.DeleteLink).Methods(http.MethodGet)
 
 	fmt.Println("Running at localhost:8080")
-	err := http.ListenAndServe("localhost:8080", router)
+	err := http.ListenAndServe("localhost:8080", handlers.CORS()(router))
 	if err != nil {
 		panic("Cannot start the server")
 	}

@@ -1,12 +1,29 @@
 # Links App
 
+## Backend APIs
+
 Credit for the user API and the GoLang application goes to [Mohit Dubey](https://medium.com/@mohitdubey_83162).
 
 The application is an extension of [this example](https://medium.com/@mohitdubey_83162/mastering-mongodb-integration-with-go-a-step-by-step-developers-guide-3fcbe46a906e).
 
 The GitHub repo is available [here](https://github.com/mohitdb7/full-stack-development/tree/main/mongo-db).
 
-## Users
+### Run
+
+To run the backend APIs, open a terminal in the root directory of the project.
+Change directory into `links-be` with:
+
+```bash
+cd links-be
+```
+
+and then run:
+
+```
+go run main.go
+```
+
+### Users
 
 Create a new user:
 
@@ -38,7 +55,7 @@ Delete user with ID `<ID>`:
 curl --location 'http://localhost:8080/users/delete/<ID>'
 ```
 
-## Links
+### Links
 
 Create a new link:
 
@@ -67,3 +84,15 @@ Delete link with ID `<ID>`:
 ```
 curl --location 'http://localhost:8080/links/delete/<ID>'
 ```
+
+## Frontend
+
+The frontend uses [Alpine.js](https://alpinejs.dev/) and was firstly put together using the help of [ChatGPT](https://chatgpt.com/).
+
+To easily serve the frontend, run a Python HTTP server with:
+
+```bash
+python -m http.server 3000
+```
+
+You'll get the frontend available at http://localhost:3000/. Don't forget to run the APIs in parallel!
